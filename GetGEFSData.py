@@ -12,6 +12,7 @@ import os
 import urllib.request 
 import numpy as np
 import shutil
+import datetime
 import GetGEFSFile
 from joblib import Parallel, delayed
 
@@ -21,21 +22,25 @@ GEFS_URL_base = 'https://nomads.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs'
 GEFS_Grid     = 'pgrb2'
 
 nEns = 21
-
 WriteDirBase = '.'
 
-fcst_cycle = sys.argv[1]
-year       = sys.argv[2]
-month      = sys.argv[3]
-day        = sys.argv[4]
-nProcs     = int(sys.argv[5])
-
+if len(sys.argv) == 3 or len(sys.argv) == 4:
+	fcst_cycle = sys.argv[1]
+	nProcs     = int(sys.argv[2])
+	
+	#get the current date in the format Year-Month-Day, without any dashes	
+	dateString = datetime.date.today().isoformat().replace('-','')
+	if len(sys.argv) == 4:
+		dateString = sys.argv[3]
+else:
+	sys.exit('usage: GetGEFSData.py <forecast_cycle> <num_threads> [date_string]')
+	
 # Error traps
 if((fcst_cycle!='00') & (fcst_cycle!='06') & (fcst_cycle!='12') & (fcst_cycle!='18')):
     sys.exit('fcst_cycle must be 00, 06, 12, or 18')
 
 # Construct the name of the url where the GEFS files are
-GEFS_URL = GEFS_URL_base+'.'+year+month+day+'/'+fcst_cycle+'/'+GEFS_Grid+'/'
+GEFS_URL = GEFS_URL_base+'.'+dateString+'/'+fcst_cycle+'/'+GEFS_Grid+'/'
 
 print(GEFS_URL)
 
@@ -48,7 +53,7 @@ GEFS_Soup = bs4.BeautifulSoup(GEFS_HTMP,'lxml')
 # Get all the links stored in the BeautifulSoup class and store them
 GEFS_Links = GEFS_Soup.findAll('a', limit=5)
 
-WriteDir         = WriteDirBase+'/'+'gefs_'+year+month+day
+WriteDir         = WriteDirBase+'/'+'gefs_'+dateString
 WriteDirFcstCyc  = WriteDir+'/f'+fcst_cycle
 
 print('Directory: ' + WriteDir)
