@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 #Author: Connor BRown
 # 21 Feb 2019
 
 DATE=$(date +"%Y%m%d")
-DATA_DIR="./GFSData"
+DATA_DIR="./SeniorProject/ARWarn/GFSData"
 FILENAME="*.grb"
 #MTIME="+1"
 MMIN="+10"
