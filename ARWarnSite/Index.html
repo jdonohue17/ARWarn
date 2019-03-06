@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script>
+	function faceChange(i) {
+		switch(i){
+			case 1:
+				document.getElementById("face").src="Happy1.jpg";
+				break;
+			case 2:
+				document.getElementById("face").src="Happy2.jpg";
+				break;
+			case 3:
+				document.getElementById("face").src="Happy3.jpg";
+				break;
+			case 4:
+				document.getElementById("face").src="Happy4.jpg";
+				break;
+		}
+	}
+</script>
+
+</head>
+
+<body>
+
+<h1>ARWarn Alert System</h1>
+
+<p>This is the Atmospheric River alert webpage</p>
+
+
+<button type="button"
+onclick="faceChange(1)">Forcast Cycle 00</button>
+
+<button type="button"
+onclick="faceChange(2)">Forcast Cycle 06</button>
+
+<button type="button"
+onclick="faceChange(3)">Forcast Cycle 12</button>
+
+<button type="button"
+onclick="faceChange(4)">Forcast Cycle 18</button>
+
+<p>
+<img id="face" src="Happy1.jpg" alt="HappyFace" width="250" height="250">
+</p>
+
+<div class="btn-group">
+  <button>Test</button>
+  <button>Test</button>
+  <button>Test</button>
+  <button>Test</button>
+  <button>Test</button>
+</div>
+
+.btn-group button { 
+  background-color: #4CAF50;
+  display: block;
+}
+
+</body>
+</html>
