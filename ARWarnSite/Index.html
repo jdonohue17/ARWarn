@@ -20,6 +20,8 @@
 				break;
 		}
 	}
+	
+	
 </script>
 
 </head>
@@ -30,7 +32,8 @@
 
 <p>This is the Atmospheric River alert webpage</p>
 
-
+<p>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
 onclick="faceChange(1)">Forcast Cycle 00</button>
 
@@ -43,22 +46,69 @@ onclick="faceChange(3)">Forcast Cycle 12</button>
 <button type="button"
 onclick="faceChange(4)">Forcast Cycle 18</button>
 
-<p>
-<img id="face" src="Happy1.jpg" alt="HappyFace" width="250" height="250">
-</p>
 
-<div class="btn-group">
-  <button>Test</button>
-  <button>Test</button>
-  <button>Test</button>
-  <button>Test</button>
-  <button>Test</button>
+<div style="width: 100%; overflow: hidden;">
+	<div class="btn-group" style="width: 100px; float: left;">
+		<input id="Newest" type="button" value="Hello"/>
+		<p></p>
+		<input id="Date2" type="button" value="Hello"/>
+		<p></p>
+		<input id="Date3" type="button" value="Hello"/>
+		<p></p>
+		<input id="Date4" type="button" value="Hello"/>
+		<p></p>
+		<input id="Date5" type="button" value="Hello"/>
+		<p></p>
+		<input id="Date6" type="button" value="Hello"/>
+		<p></p>
+		<input id="Oldest" type="button" value="Hello"/>
+		<p></p>
+	</div>
+	<div class="imgArea">
+		<img id="face" src="Happy1.jpg" alt="HappyFace" align="top">
+	</div>
 </div>
 
-.btn-group button { 
-  background-color: #4CAF50;
+
+
+<style>
+.btn-group input { 
   display: block;
 }
+</style>
+
+
+
+</p>
+
+<script>
+	var d = new Date();
+	var month1 = d.getMonth() + 1;
+	var month2 = d.getMonth();
+	var day = d.getDate();
+	var year = d.getFullYear();
+	var displayNewest = "" + month1 + "/" + day + "/" + year + "";
+	var displayDate2 = "" + month1 + "/" + (day - 1) + "/" + year + "";
+	var displayDate3 = "" + month1 + "/" + (day - 2) + "/" + year + "";
+	var displayDate4 = "" + month1 + "/" + (day - 3) + "/" + year + "";
+	var displayDate5 = "" + month1 + "/" + (day - 4) + "/" + year + "";
+	var displayDate6 = "" + month1 + "/" + (day - 5) + "/" + year + "";
+	var displayOldest = "" + month1 + "/" + (day - 6) + "/" + year + "";
+	
+	document.getElementById("Newest").value=displayNewest;
+	document.getElementById("Date2").value=displayDate2;
+	document.getElementById("Date3").value=displayDate3;
+	document.getElementById("Date4").value=displayDate4;
+	document.getElementById("Date5").value=displayDate5;
+	document.getElementById("Date6").value=displayDate6;
+	document.getElementById("Oldest").value=displayOldest;
+	
+	
+	
+</script>
+
+
+
 
 </body>
 </html>
