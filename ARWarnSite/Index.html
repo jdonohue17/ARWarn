@@ -3,27 +3,6 @@
 
 <head>
 
-<script>
-	function faceChange(i) {
-		switch(i){
-			case 1:
-				document.getElementById("face").src="Happy1.jpg";
-				break;
-			case 2:
-				document.getElementById("face").src="Happy2.jpg";
-				break;
-			case 3:
-				document.getElementById("face").src="Happy3.jpg";
-				break;
-			case 4:
-				document.getElementById("face").src="Happy4.jpg";
-				break;
-		}
-	}
-	
-	
-</script>
-
 </head>
 
 <body>
@@ -35,33 +14,33 @@
 <p>
 &emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
-onclick="faceChange(1)">Forcast Cycle 00</button>
+onclick="passForcastCycle(0)">Forcast Cycle 00</button>
 
 <button type="button"
-onclick="faceChange(2)">Forcast Cycle 06</button>
+onclick="passForcastCycle(6)">Forcast Cycle 06</button>
 
 <button type="button"
-onclick="faceChange(3)">Forcast Cycle 12</button>
+onclick="passForcastCycle(12)">Forcast Cycle 12</button>
 
 <button type="button"
-onclick="faceChange(4)">Forcast Cycle 18</button>
+onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 
 
 <div style="width: 100%; overflow: hidden;">
 	<div class="btn-group" style="width: 100px; float: left;">
-		<input id="Newest" type="button" value="Hello"/>
+		<input id="Newest" type="button" onclick="passDate(0)" value="Hello"/>
 		<p></p>
-		<input id="Date2" type="button" value="Hello"/>
+		<input id="Date2" type="button" onclick="passDate(1)" value="Hello"/>
 		<p></p>
-		<input id="Date3" type="button" value="Hello"/>
+		<input id="Date3" type="button" onclick="passDate(2)" value="Hello"/>
 		<p></p>
-		<input id="Date4" type="button" value="Hello"/>
+		<input id="Date4" type="button" onclick="passDate(3)" value="Hello"/>
 		<p></p>
-		<input id="Date5" type="button" value="Hello"/>
+		<input id="Date5" type="button" onclick="passDate(4)" value="Hello"/>
 		<p></p>
-		<input id="Date6" type="button" value="Hello"/>
+		<input id="Date6" type="button" onclick="passDate(5)" value="Hello"/>
 		<p></p>
-		<input id="Oldest" type="button" value="Hello"/>
+		<input id="Oldest" type="button" onclick="passDate(6)" value="Hello"/>
 		<p></p>
 	</div>
 	<div class="imgArea">
@@ -83,17 +62,23 @@ onclick="faceChange(4)">Forcast Cycle 18</button>
 
 <script>
 	var d = new Date();
-	var month1 = d.getMonth() + 1;
-	var month2 = d.getMonth();
-	var day = d.getDate();
-	var year = d.getFullYear();
-	var displayNewest = "" + month1 + "/" + day + "/" + year + "";
-	var displayDate2 = "" + month1 + "/" + (day - 1) + "/" + year + "";
-	var displayDate3 = "" + month1 + "/" + (day - 2) + "/" + year + "";
-	var displayDate4 = "" + month1 + "/" + (day - 3) + "/" + year + "";
-	var displayDate5 = "" + month1 + "/" + (day - 4) + "/" + year + "";
-	var displayDate6 = "" + month1 + "/" + (day - 5) + "/" + year + "";
-	var displayOldest = "" + month1 + "/" + (day - 6) + "/" + year + "";
+	var currentDayTime = d.getTime();
+	var dayLength = 86400000;
+	
+	var d2 = new Date(currentDayTime - dayLength);
+	var d3 = new Date(currentDayTime - dayLength*2);
+	var d4 = new Date(currentDayTime - dayLength*3);
+	var d5 = new Date(currentDayTime - dayLength*4);
+	var d6 = new Date(currentDayTime - dayLength*5);
+	var d7 = new Date(currentDayTime - dayLength*6);
+	
+	var displayNewest = "" + (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + "";
+	var displayDate2 = "" + (d2.getMonth() + 1) + "/" + d2.getDate() + "/" + d2.getFullYear() + "";
+	var displayDate3 = "" + (d3.getMonth() + 1) + "/" + d3.getDate() + "/" + d3.getFullYear() + "";
+	var displayDate4 = "" + (d4.getMonth() + 1) + "/" + d4.getDate() + "/" + d4.getFullYear() + "";
+	var displayDate5 = "" + (d5.getMonth() + 1) + "/" + d5.getDate() + "/" + d5.getFullYear() + "";
+	var displayDate6 = "" + (d6.getMonth() + 1) + "/" + d6.getDate() + "/" + d6.getFullYear() + "";
+	var displayOldest = "" + (d7.getMonth() + 1) + "/" + d7.getDate() + "/" + d7.getFullYear() + "";
 	
 	document.getElementById("Newest").value=displayNewest;
 	document.getElementById("Date2").value=displayDate2;
@@ -102,6 +87,63 @@ onclick="faceChange(4)">Forcast Cycle 18</button>
 	document.getElementById("Date5").value=displayDate5;
 	document.getElementById("Date6").value=displayDate6;
 	document.getElementById("Oldest").value=displayOldest;
+	
+	var forcastCycle = "00";
+	var monthVar = d.getMonth() + 1;
+	var monthPrint = "" + monthVar;
+	if(monthVar < 10){
+		monthPrint = "0" + monthVar;
+	}
+	var dayVar = d.getDate();
+	var dayPrint = "" + dayVar;
+	if(dayVar < 10){
+		dayPrint = "0" + dayVar;
+	}
+	var forcastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
+	
+	document.getElementById("face").src = "" + forcastDate + "" + forcastCycle + ".jpg";
+	//document.getElementById("face").src="Happy" + i + ".jpg";
+
+	function passForcastCycle(i) {
+		switch (i){
+			case 0:
+				forcastCycle = "00";
+				break;
+			case 6:
+				forcastCycle = "06";
+				break;
+			case 12:
+				forcastCycle = "12";
+				break;
+			case 18:
+				forcastCycle = "18";
+				break;
+		}
+		displayImage();
+	}
+	
+	function passDate(i) {
+		var imageDate = new Date(currentDayTime - dayLength*i);
+		
+		monthVar = imageDate.getMonth() + 1;
+		monthPrint = "" + monthVar;
+		if(monthVar < 10){
+			monthPrint = "0" + monthVar;
+		}
+		
+		dayVar = imageDate.getDate();
+		dayPrint = "" + dayVar;
+		if(dayVar < 10){
+			dayPrint = "0" + dayVar;
+		}
+		forcastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
+		
+		displayImage();
+	}
+	
+	function displayImage(){
+		document.getElementById("face").src = "" + forcastDate + "" + forcastCycle + ".jpg";
+	}
 	
 	
 	
