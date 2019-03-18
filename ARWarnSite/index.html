@@ -48,6 +48,21 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	</div>
 </div>
 
+<div class="dateSlider">
+	&emsp;&emsp;&emsp;&emsp;&emsp;
+	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
+</div>
+
+<style>
+.slider {
+	-webkit-appearance: none;
+	width: 35%;
+	height: 15px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+}
+</style>
 
 
 <style>
@@ -63,14 +78,14 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 <script>
 	var d = new Date();
 	var currentDayTime = d.getTime();
-	var dayLength = 86400000;
+	var DAYLENGTH = 86400000;
 	
-	var d2 = new Date(currentDayTime - dayLength);
-	var d3 = new Date(currentDayTime - dayLength*2);
-	var d4 = new Date(currentDayTime - dayLength*3);
-	var d5 = new Date(currentDayTime - dayLength*4);
-	var d6 = new Date(currentDayTime - dayLength*5);
-	var d7 = new Date(currentDayTime - dayLength*6);
+	var d2 = new Date(currentDayTime - DAYLENGTH);
+	var d3 = new Date(currentDayTime - DAYLENGTH*2);
+	var d4 = new Date(currentDayTime - DAYLENGTH*3);
+	var d5 = new Date(currentDayTime - DAYLENGTH*4);
+	var d6 = new Date(currentDayTime - DAYLENGTH*5);
+	var d7 = new Date(currentDayTime - DAYLENGTH*6);
 	
 	var displayNewest = "" + (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + "";
 	var displayDate2 = "" + (d2.getMonth() + 1) + "/" + d2.getDate() + "/" + d2.getFullYear() + "";
@@ -123,7 +138,7 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	}
 	
 	function passDate(i) {
-		var imageDate = new Date(currentDayTime - dayLength*i);
+		var imageDate = new Date(currentDayTime - DAYLENGTH*i);
 		
 		monthVar = imageDate.getMonth() + 1;
 		monthPrint = "" + monthVar;
@@ -148,7 +163,14 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	
 	
 </script>
+<script>
+	var slider = document.getElementById("daySlider");
 
+	slider.oninput = function() {
+		var i = parseInt(slider.value);
+		passDate(i);
+	} 
+</script>
 
 
 
