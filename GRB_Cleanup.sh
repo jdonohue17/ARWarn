@@ -12,7 +12,7 @@ LOGNAME="$DATA_DIR/log_${DATE}.txt"
 
 mkdir -p $DATA_DIR
 
-find $DATA_DIR -name $FILENAME -type f -mtime $MTIME -delete -maxdepth 1 >> $LOGNAME
+find $DATA_DIR -name $FILENAME -type f -mtime $MTIME -delete
 
 #find $DATA_DIR -name $FILENAME -type f -mmin $MMIN >> $LOGNAME
 
