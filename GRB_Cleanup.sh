@@ -4,7 +4,7 @@
 # 21 Feb 2019
 
 DATE=$(date +"%Y%m%d")
-DATA_DIR="./SeniorProject/ARWarn/GFSData"
+DATA_DIR="./GFSData"
 FILENAME="*.grb"
 #MTIME="+1"
 MMIN="+10"
