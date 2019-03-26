@@ -6,7 +6,7 @@
 DATE=$(date +"%Y%m%d")
 DATA_DIR="./SeniorProject/ARWarn/GFSData"
 FILENAME="*.grb"
-MTIME="+1"
+MTIME="+7"
 #MMIN="+10"
 LOGNAME="$DATA_DIR/log_${DATE}.txt"
 
