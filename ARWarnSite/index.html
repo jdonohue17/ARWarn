@@ -44,7 +44,7 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 		<p></p>
 	</div>
 	<div class="imgArea">
-		<img id="face" src="Happy1.jpg" alt="HappyFace" align="top">
+		<img id="face" src="Happy1.jpg" alt="Data Not Avaliable" align="top">
 	</div>
 </div>
 
@@ -52,6 +52,9 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	&emsp;&emsp;&emsp;&emsp;&emsp;
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
+<p id="DateDisplay">
+Date goes here.
+</p>
 
 <style>
 .slider {
@@ -79,6 +82,7 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	var d = new Date();
 	var currentDayTime = d.getTime();
 	var DAYLENGTH = 86400000;
+	var dateString;
 	
 	var d2 = new Date(currentDayTime - DAYLENGTH);
 	var d3 = new Date(currentDayTime - DAYLENGTH*2);
@@ -116,7 +120,8 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	}
 	var forcastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
 	
-	document.getElementById("face").src = "" + forcastDate + "" + forcastCycle + ".jpg";
+	document.getElementById("face").src = "images/" + forcastDate + "" + forcastCycle + ".png";
+	document.getElementById("DateDisplay").innerHTML = displayNewest + " ForcastCycle: " + forcastCycle;
 	//document.getElementById("face").src="Happy" + i + ".jpg";
 
 	function passForcastCycle(i) {
@@ -153,11 +158,14 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 		}
 		forcastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
 		
+		dateString = "" + (imageDate.getMonth() + 1) + "/" + imageDate.getDate() + "/" + imageDate.getFullYear();
+		
 		displayImage();
 	}
 	
 	function displayImage(){
-		document.getElementById("face").src = "" + forcastDate + "" + forcastCycle + ".jpg";
+		document.getElementById("face").src = "images/" + forcastDate + "" + forcastCycle + ".png";
+		document.getElementById("DateDisplay").innerHTML = dateString + " ForcastCycle: " + forcastCycle;
 	}
 	
 	
