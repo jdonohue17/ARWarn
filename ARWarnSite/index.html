@@ -27,15 +27,19 @@ div.CenteredDate {
 &emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
 onclick="passForcastCycle(0)">Forcast Cycle 00</button>
+onclick="passForecastCycle(0)">Forecast Cycle 00</button>
 
 <button type="button"
 onclick="passForcastCycle(6)">Forcast Cycle 06</button>
+onclick="passForecastCycle(6)">Forecast Cycle 06</button>
 
 <button type="button"
 onclick="passForcastCycle(12)">Forcast Cycle 12</button>
+onclick="passForecastCycle(12)">Forecast Cycle 12</button>
 
 <button type="button"
 onclick="passForcastCycle(18)">Forcast Cycle 18</button>
+onclick="passForecastCycle(18)">Forecast Cycle 18</button>
 
 
 <div style="width: 100%; overflow: hidden;">
@@ -57,6 +61,11 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	</div>
 	<div class="imgArea">
 		<img id="face" src="Happy1.jpg" alt="Data Not Avaliable" align="top">
+		<img id="forecastImg" src="" alt="Data Not Avaliable" align="top">
+		
+		<p id="DateDisplay">
+		Date goes here.
+		</p>
 	</div>
 </div>
 
@@ -64,14 +73,40 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
 
+<<<<<<< HEAD
 <style>
 div.dateSlider {
 	text-align: center;
 }
 </style>
 
+=======
+</p>
+>>>>>>> f820171ce29e512abfae8c1439c4d334dd849d8b
 
 <style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+[type="button"] {
+  background-color: white;
+  border: 2px solid black;
+  color: #4f4f4f; /* Dark Grey */
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+}
+
+[type="button"]:hover {
+  background-color: #e6f2ff /* Light Blue */
+}
+	
 .slider {
 	-webkit-appearance: none;
 	width: 35%;
@@ -128,22 +163,46 @@ div.dateSlider {
 	document.getElementById("Date6").value=displayDate6;
 	document.getElementById("Oldest").value=displayOldest;
 	
+<<<<<<< HEAD
 	passForcastCycle(0);
 	passDate(0);
+=======
+	var forecastCycle = "00";
+	var monthVar = d.getMonth() + 1;
+	var monthPrint = "" + monthVar;
+	if(monthVar < 10){
+		monthPrint = "0" + monthVar;
+	}
+	var dayVar = d.getDate();
+	var dayPrint = "" + dayVar;
+	if(dayVar < 10){
+		dayPrint = "0" + dayVar;
+	}
+	var forecastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
+	
+	document.getElementById("forecastImg").src = "images/" + forecastDate + "" + forecastCycle + ".png";
+	document.getElementById("DateDisplay").innerHTML = displayNewest + " ForecastCycle: " + forecastCycle;
+	//document.getElementById("forecastImg").src="Happy" + i + ".jpg";
+>>>>>>> f820171ce29e512abfae8c1439c4d334dd849d8b
 
 	function passForcastCycle(i) {
+	function passForecastCycle(i) {
 		switch (i){
 			case 0:
 				forcastCycle = "00";
+				forecastCycle = "00";
 				break;
 			case 6:
 				forcastCycle = "06";
+				forecastCycle = "06";
 				break;
 			case 12:
 				forcastCycle = "12";
+				forecastCycle = "12";
 				break;
 			case 18:
 				forcastCycle = "18";
+				forecastCycle = "18";
 				break;
 		}
 		displayImage();
@@ -164,6 +223,7 @@ div.dateSlider {
 			dayPrint = "0" + dayVar;
 		}
 		forcastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
+		forecastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
 		
 		dateString = "" + (imageDate.getMonth() + 1) + "/" + imageDate.getDate() + "/" + imageDate.getFullYear();
 		
@@ -173,6 +233,9 @@ div.dateSlider {
 	function displayImage(){
 		document.getElementById("face").src = "images/" + forcastDate + "" + forcastCycle + ".png";
 		document.getElementById("DateDisplay").innerHTML = dateString + " ForcastCycle: " + forcastCycle;
+		document.getElementById("forecastImg").src = "images/" + forecastDate + "" + forecastCycle + ".png";
+		document.getElementById("forecastImg").alt = "Forecast for " + forecastDate + " forecast cycle " + forecastCycle;
+		document.getElementById("DateDisplay").innerHTML = dateString + " ForecastCycle: " + forecastCycle;
 	}
 	
 	

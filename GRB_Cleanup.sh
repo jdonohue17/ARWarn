@@ -5,14 +5,21 @@
 
 DATE=$(date +"%Y%m%d")
 DATA_DIR="./GFSData"
+IMG_DIR="/opt/python-user/html/images"
 FILENAME="*.grb"
-MTIME="+7"
+NETCDFNAME="*.nc"
+IMGNAME="*.png"
+MTIME="+30"
 #MMIN="+10"
 LOGNAME="$DATA_DIR/log_${DATE}.txt"
 
 mkdir -p $DATA_DIR
 
 find $DATA_DIR -name $FILENAME -type f -mtime $MTIME -delete
+
+find $DATA_DIR -name $NETCDFNAME -type f -mtime $MTIME -delete
+
+find $IMG_DIR -name $IMGNAME -type f -mtime $MTIME -delete
 
 #find $DATA_DIR -name $FILENAME -type f -mmin $MMIN >> $LOGNAME
 
