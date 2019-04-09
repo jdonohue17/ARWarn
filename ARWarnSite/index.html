@@ -11,34 +11,20 @@
 
 <p>This is the Atmospheric River alert webpage</p>
 
-<div class="CenteredDate">
-<p id="DateDisplay">
-	Date goes here.
-</p>
-</div>
 
-<style>
-div.CenteredDate {
-	text-align: center;
-}
-</style>
 
 <p>
 &emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
-onclick="passForcastCycle(0)">Forcast Cycle 00</button>
 onclick="passForecastCycle(0)">Forecast Cycle 00</button>
 
 <button type="button"
-onclick="passForcastCycle(6)">Forcast Cycle 06</button>
 onclick="passForecastCycle(6)">Forecast Cycle 06</button>
 
 <button type="button"
-onclick="passForcastCycle(12)">Forcast Cycle 12</button>
 onclick="passForecastCycle(12)">Forecast Cycle 12</button>
 
 <button type="button"
-onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 onclick="passForecastCycle(18)">Forecast Cycle 18</button>
 
 
@@ -59,30 +45,37 @@ onclick="passForecastCycle(18)">Forecast Cycle 18</button>
 		<input id="Oldest" type="button" onclick="passDate(6)" value="Hello"/>
 		<p></p>
 	</div>
-	<div class="imgArea">
-		<img id="face" src="Happy1.jpg" alt="Data Not Avaliable" align="top">
-		<img id="forecastImg" src="" alt="Data Not Avaliable" align="top">
-		
-		<p id="DateDisplay">
+	<div class="CenteredDate">
+	<p id="DateDisplay">
 		Date goes here.
-		</p>
+	</p>
+	</div>
+
+	
+	<div class="imgArea">
+		<img id="forecastImg" src="" alt="Data Not Avaliable" align="top">
 	</div>
 </div>
+
+<style>
+	div.CenteredDate {
+		text-align: center;
+	}
+</style>
 
 <div class="dateSlider">
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
 
-<<<<<<< HEAD
 <style>
 div.dateSlider {
 	text-align: center;
 }
 </style>
 
-=======
+
 </p>
->>>>>>> f820171ce29e512abfae8c1439c4d334dd849d8b
+
 
 <style>
 body {
@@ -124,21 +117,17 @@ body {
 }
 </style>
 
-
-
-</p>
-
 <script>
 	var d = new Date();
 	var currentDayTime = d.getTime();
 	var DAYLENGTH = 86400000;
 	var dateString;
-	var forcastCycle;
+	var forecastCycle;
 	var monthVar;
 	var monthPrint;
 	var dayVar;
 	var dayPrint;
-	var forcastDate;
+	var forecastDate;
 	
 	var d2 = new Date(currentDayTime - DAYLENGTH);
 	var d3 = new Date(currentDayTime - DAYLENGTH*2);
@@ -163,45 +152,21 @@ body {
 	document.getElementById("Date6").value=displayDate6;
 	document.getElementById("Oldest").value=displayOldest;
 	
-<<<<<<< HEAD
-	passForcastCycle(0);
+	passForecastCycle(0);
 	passDate(0);
-=======
-	var forecastCycle = "00";
-	var monthVar = d.getMonth() + 1;
-	var monthPrint = "" + monthVar;
-	if(monthVar < 10){
-		monthPrint = "0" + monthVar;
-	}
-	var dayVar = d.getDate();
-	var dayPrint = "" + dayVar;
-	if(dayVar < 10){
-		dayPrint = "0" + dayVar;
-	}
-	var forecastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
-	
-	document.getElementById("forecastImg").src = "images/" + forecastDate + "" + forecastCycle + ".png";
-	document.getElementById("DateDisplay").innerHTML = displayNewest + " ForecastCycle: " + forecastCycle;
-	//document.getElementById("forecastImg").src="Happy" + i + ".jpg";
->>>>>>> f820171ce29e512abfae8c1439c4d334dd849d8b
 
-	function passForcastCycle(i) {
 	function passForecastCycle(i) {
 		switch (i){
 			case 0:
-				forcastCycle = "00";
 				forecastCycle = "00";
 				break;
 			case 6:
-				forcastCycle = "06";
 				forecastCycle = "06";
 				break;
 			case 12:
-				forcastCycle = "12";
 				forecastCycle = "12";
 				break;
 			case 18:
-				forcastCycle = "18";
 				forecastCycle = "18";
 				break;
 		}
@@ -222,7 +187,6 @@ body {
 		if(dayVar < 10){
 			dayPrint = "0" + dayVar;
 		}
-		forcastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
 		forecastDate = "" + imageDate.getFullYear() + "" + monthPrint + "" + dayPrint;
 		
 		dateString = "" + (imageDate.getMonth() + 1) + "/" + imageDate.getDate() + "/" + imageDate.getFullYear();
@@ -231,8 +195,6 @@ body {
 	}
 	
 	function displayImage(){
-		document.getElementById("face").src = "images/" + forcastDate + "" + forcastCycle + ".png";
-		document.getElementById("DateDisplay").innerHTML = dateString + " ForcastCycle: " + forcastCycle;
 		document.getElementById("forecastImg").src = "images/" + forecastDate + "" + forecastCycle + ".png";
 		document.getElementById("forecastImg").alt = "Forecast for " + forecastDate + " forecast cycle " + forecastCycle;
 		document.getElementById("DateDisplay").innerHTML = dateString + " ForecastCycle: " + forecastCycle;
