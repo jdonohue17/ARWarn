@@ -11,6 +11,18 @@
 
 <p>This is the Atmospheric River alert webpage</p>
 
+<div class="CenteredDate">
+<p id="DateDisplay">
+	Date goes here.
+</p>
+</div>
+
+<style>
+div.CenteredDate {
+	text-align: center;
+}
+</style>
+
 <p>
 &emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
@@ -49,12 +61,15 @@ onclick="passForcastCycle(18)">Forcast Cycle 18</button>
 </div>
 
 <div class="dateSlider">
-	&emsp;&emsp;&emsp;&emsp;&emsp;
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
-<p id="DateDisplay">
-Date goes here.
-</p>
+
+<style>
+div.dateSlider {
+	text-align: center;
+}
+</style>
+
 
 <style>
 .slider {
@@ -83,6 +98,12 @@ Date goes here.
 	var currentDayTime = d.getTime();
 	var DAYLENGTH = 86400000;
 	var dateString;
+	var forcastCycle;
+	var monthVar;
+	var monthPrint;
+	var dayVar;
+	var dayPrint;
+	var forcastDate;
 	
 	var d2 = new Date(currentDayTime - DAYLENGTH);
 	var d3 = new Date(currentDayTime - DAYLENGTH*2);
@@ -107,22 +128,8 @@ Date goes here.
 	document.getElementById("Date6").value=displayDate6;
 	document.getElementById("Oldest").value=displayOldest;
 	
-	var forcastCycle = "00";
-	var monthVar = d.getMonth() + 1;
-	var monthPrint = "" + monthVar;
-	if(monthVar < 10){
-		monthPrint = "0" + monthVar;
-	}
-	var dayVar = d.getDate();
-	var dayPrint = "" + dayVar;
-	if(dayVar < 10){
-		dayPrint = "0" + dayVar;
-	}
-	var forcastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
-	
-	document.getElementById("face").src = "images/" + forcastDate + "" + forcastCycle + ".png";
-	document.getElementById("DateDisplay").innerHTML = displayNewest + " ForcastCycle: " + forcastCycle;
-	//document.getElementById("face").src="Happy" + i + ".jpg";
+	passForcastCycle(0);
+	passDate(0);
 
 	function passForcastCycle(i) {
 		switch (i){
