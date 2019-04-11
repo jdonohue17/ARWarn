@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
+	<title>ARWarn</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-<h1>ARWarn Alert System</h1>
+<div class="header">
+	<h1>ARWarn Alert System</h1>
+</div>
 
-<p>This is the Atmospheric River alert webpage</p>
-
+<div class="content">
 <p>
-&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 <button type="button"
 onclick="passForecastCycle(0)">Forecast Cycle 00</button>
 
@@ -53,15 +55,29 @@ onclick="passForecastCycle(18)">Forecast Cycle 18</button>
 </div>
 
 <div class="dateSlider">
-	&emsp;&emsp;&emsp;&emsp;&emsp;
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
 
 </p>
-
+</div>
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	background: #f8f8f8; /* Light Grey */
+}
+
+.header {
+	background: #e6f2ff; /* Light Blue */
+	color: #4f4f4f; /* Dark Grey */	
+	padding: 15px;
+	border-bottom: 2px solid #4f4f4f; /* Dark Grey */
+	
+}
+
+.content {
+	margin: 20px;
 }
 
 [type="button"] {
