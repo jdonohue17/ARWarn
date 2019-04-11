@@ -45,22 +45,40 @@ onclick="passForecastCycle(18)">Forecast Cycle 18</button>
 		<input id="Oldest" type="button" onclick="passDate(6)" value="Hello"/>
 		<p></p>
 	</div>
-	<div class="imgArea">
-		<img id="forecastImg" src="" alt="Data Not Avaliable" align="top">
-		
-		<p id="DateDisplay">
+	<div class="CenteredDate">
+	<p id="DateDisplay">
 		Date goes here.
-		</p>
+	</p>
+	</div>
+
+	
+	<div class="imgArea">
+		<img id="forecastImg" width=600 height=500 src="" alt="Data Not Avaliable" align="top">
 	</div>
 </div>
+
+<style>
+	div.CenteredDate {
+		text-align: center;
+	}
+</style>
 
 <div class="dateSlider">
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<input type="range" min="0" max="30" value="0" class="slider" id="daySlider">
 </div>
 
+<style>
+div.dateSlider {
+	text-align: center;
+}
+</style>
+
+
 </p>
+
 </div>
+
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -115,13 +133,17 @@ body {
 }
 </style>
 
-
-
 <script>
 	var d = new Date();
 	var currentDayTime = d.getTime();
 	var DAYLENGTH = 86400000;
 	var dateString;
+	var forecastCycle;
+	var monthVar;
+	var monthPrint;
+	var dayVar;
+	var dayPrint;
+	var forecastDate;
 	
 	var d2 = new Date(currentDayTime - DAYLENGTH);
 	var d3 = new Date(currentDayTime - DAYLENGTH*2);
@@ -146,22 +168,8 @@ body {
 	document.getElementById("Date6").value=displayDate6;
 	document.getElementById("Oldest").value=displayOldest;
 	
-	var forecastCycle = "00";
-	var monthVar = d.getMonth() + 1;
-	var monthPrint = "" + monthVar;
-	if(monthVar < 10){
-		monthPrint = "0" + monthVar;
-	}
-	var dayVar = d.getDate();
-	var dayPrint = "" + dayVar;
-	if(dayVar < 10){
-		dayPrint = "0" + dayVar;
-	}
-	var forecastDate = "" + d.getFullYear() + "" + monthPrint + "" + dayPrint;
-	
-	document.getElementById("forecastImg").src = "images/" + forecastDate + "" + forecastCycle + ".png";
-	document.getElementById("DateDisplay").innerHTML = displayNewest + " ForecastCycle: " + forecastCycle;
-	//document.getElementById("forecastImg").src="Happy" + i + ".jpg";
+	passForecastCycle(0);
+	passDate(0);
 
 	function passForecastCycle(i) {
 		switch (i){
